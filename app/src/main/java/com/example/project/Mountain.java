@@ -4,14 +4,18 @@ public class Mountain {
     private String id;
     private String name;
     private String location;
+    private int cost;
     private int size;
+    private int company;
     private Auxdata auxdata;
 
-    public Mountain(String id, String name, String location, int size, Auxdata auxdata) {
+    public Mountain(String id, String name, String location, int cost, int size, int company, Auxdata auxdata) {
         this.id = id;
         this.name = name;
         this.location = location;
+        this.cost = cost;
         this.size = size;
+        this.company = company;
         this.auxdata = auxdata;
     }
 
@@ -24,9 +28,11 @@ public class Mountain {
     public String getLocation() {
         return location;
     }
+    public int getCost(){return cost;}
     public int getSize() {
         return size;
     }
+    public int getCompany(){return company;}
     public Auxdata getAuxdata() {
         return auxdata;
     }

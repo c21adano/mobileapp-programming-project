@@ -35,9 +35,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         String name = mountains.get(position).getName();
         String location = mountains.get(position).getLocation();
         Integer size = mountains.get(position).getSize();
+        Integer cost = mountains.get(position).getCost();
+        Integer company = mountains.get(position).getCompany();
         holder.name.setText(name);
         holder.location.setText((location));
+        holder.cost.setText(cost.toString());
         holder.size.setText(size.toString());
+        holder.company.setText(company.toString());
         holder.wiki.setText(mountains.get(position).getAuxdata().getWiki());
 
     }
@@ -49,13 +53,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class MountainViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name, location, size, wiki;
+        private TextView name, location, size, cost, company, wiki;
 
         public MountainViewHolder(final View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.Name);
             location = itemView.findViewById(R.id.location);
             size = itemView.findViewById(R.id.height);
+            cost = itemView.findViewById(R.id.cost);
+            company = itemView.findViewById(R.id.company);
             wiki = itemView.findViewById(R.id.wiki);
         }
 
