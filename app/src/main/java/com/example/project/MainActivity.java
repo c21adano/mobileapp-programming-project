@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
-    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
-    private final String JSON_FILE = "mountains.json";
+    private final String JSON_URL = "link here";
+    private final String JSON_FILE = "colors.json";
     private ArrayList<Color> colors;
     private RecyclerView recyclerView;
 
