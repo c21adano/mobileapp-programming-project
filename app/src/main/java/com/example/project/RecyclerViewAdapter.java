@@ -44,6 +44,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.company.setText(company.toString());
         holder.wiki.setText(mountains.get(position).getAuxdata().getWiki());
 
+
+        Picasso.get()
+                .load(mountains.get(position).getAuxdata().getImg())
+                .into(holder.img, new Callback() {
+                    @Override
+                    public void onSuccess() {}
+
+                    @Override
+                    public void onError(Exception e) {
+                        Picasso.get().load("https://i.ibb.co/wC7Q8zm/Untitled.png").into(holder.img);
+                    }
+                });
+
     }
 
     @Override
@@ -54,6 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class MountainViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name, location, size, cost, company, wiki;
+        ImageView img;
 
         public MountainViewHolder(final View itemView) {
             super(itemView);
@@ -63,6 +77,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             cost = itemView.findViewById(R.id.cost);
             company = itemView.findViewById(R.id.company);
             wiki = itemView.findViewById(R.id.wiki);
+            img = itemView.findViewById(R.id.image_view);
         }
 
     }
