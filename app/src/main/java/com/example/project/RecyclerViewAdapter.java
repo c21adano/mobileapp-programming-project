@@ -1,8 +1,10 @@
 package com.example.project;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,46 +15,47 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ColorViewHolder>  {
-    private ArrayList<Color> colors;
 
-    public RecyclerViewAdapter(ArrayList<Color> colors) {
-        this.colors = colors;
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MountainViewHolder>  {
+    private ArrayList<Mountain> mountains;
+
+    public RecyclerViewAdapter(ArrayList<Mountain> mountains) {
+        this.mountains = mountains;
     }
 
     @NonNull
     @Override
-    public RecyclerViewAdapter.ColorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview, parent, false);
-        return new ColorViewHolder(itemView);
+    public RecyclerViewAdapter.MountainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.mountain_list, parent, false);
+        return new MountainViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RecyclerViewAdapter.ColorViewHolder holder, int position) {
-        String name = colors.get(position).getName();
-        String waveLength = colors.get(position).getWaveLength();
-        Integer frequency = colors.get(position).getFrequency();
+    public void onBindViewHolder(@NonNull final RecyclerViewAdapter.MountainViewHolder holder, int position) {
+        String name = mountains.get(position).getName();
+        String location = mountains.get(position).getLocation();
+        Integer size = mountains.get(position).getSize();
         holder.name.setText(name);
-        holder.waveLength.setText((waveLength));
-        holder.frequency.setText(frequency.toString());
-        holder.wiki.setText(colors.get(position).getAuxdata().getWiki());
+        holder.location.setText((location));
+        holder.size.setText(size.toString());
+        holder.wiki.setText(mountains.get(position).getAuxdata().getWiki());
 
     }
 
     @Override
     public int getItemCount() {
-        return colors.size();
+        return mountains.size();
     }
 
-    public class ColorViewHolder extends RecyclerView.ViewHolder {
+    public class MountainViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name, waveLength, frequency, wiki;
+        private TextView name, location, size, wiki;
 
-        public ColorViewHolder(final View itemView) {
+        public MountainViewHolder(final View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.Name);
-            waveLength = itemView.findViewById(R.id.waveLength);
-            frequency = itemView.findViewById(R.id.Frequency);
+            location = itemView.findViewById(R.id.location);
+            size = itemView.findViewById(R.id.height);
             wiki = itemView.findViewById(R.id.wiki);
         }
 

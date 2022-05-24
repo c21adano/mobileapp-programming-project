@@ -1,18 +1,17 @@
 package com.example.project;
 
-public class Color {
-
+public class Mountain {
     private String id;
     private String name;
-    private String waveLength;
-    private int frequency;
+    private String location;
+    private int size;
     private Auxdata auxdata;
 
-    public Color(String id, String name, String waveLength, int frequency, Auxdata auxdata) {
+    public Mountain(String id, String name, String location, int size, Auxdata auxdata) {
         this.id = id;
         this.name = name;
-        this.waveLength = waveLength;
-        this.frequency = frequency;
+        this.location = location;
+        this.size = size;
         this.auxdata = auxdata;
     }
 
@@ -22,14 +21,15 @@ public class Color {
     public String getName() {
         return name;
     }
-    public String getWaveLength() {
-        return waveLength;
+    public String getLocation() {
+        return location;
     }
-    public int getFrequency() {
-        return frequency;
+    public int getSize() {
+        return size;
     }
     public Auxdata getAuxdata() {
         return auxdata;
     }
+
 
 }

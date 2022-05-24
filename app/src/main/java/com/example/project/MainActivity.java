@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +18,12 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
-    private final String JSON_URL = "link here";
-    private final String JSON_FILE = "colors.json";
-    private ArrayList<Color> colors;
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=c21adano";
+    private final String JSON_FILE = "mountains.json";
+    private ArrayList<Mountain> mountains;
     private RecyclerView recyclerView;
     private Button button;
 
@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         new JsonTask(this).execute(JSON_URL);
         new JsonFile(this, this).execute(JSON_FILE);
 
-        button = (Button) findViewById(R.id.buttonOne);
+        button =(Button) findViewById(R.id.button);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openActivity2();
-
             }
         });
     }
@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     public void onPostExecute(String json) {
         Log.d("MainActivity", json);
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Color>>(){}.getType();
-        colors = gson.fromJson(json, type);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(colors);
+        Type type = new TypeToken<ArrayList<Mountain>>(){}.getType();
+        mountains = gson.fromJson(json, type);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(mountains);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView = findViewById(R.id.recycle_view);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     }
 
     public void openActivity2(){
-        Intent intent = new Intent(this, SecondActivity.class);
+        Intent intent = new Intent(this, Activity2.class);
         startActivity(intent);
     }
 
