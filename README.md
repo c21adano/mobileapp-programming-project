@@ -1,37 +1,51 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+This project is based upon code that was written in earlier assignments. The code was cleaned up and updated to fit better with what the project needed.
+The project began with the creation of three classes: Color.java, RecyclerViewAdapter.java and Auxdata.java.
+A recyclerview layout was created that would show the json data. 
+Code was added that would handel the json data (JsonFile.java and JsonTask.java)
 
-_Du kan ta bort all text som finns sedan tidigare_.
+Json data was writen in course web service. The web service use the tags: ID, Login, Size, Location, Name, company, category and Auxdata.
+The tags were not renamed nor were new ones created for the project. The tags that were already there were used to better fit this project. Size and company were used to store max and minimum wavelenght,
+location and cost were used for max and minimum frequency. The AuxData tag hold a link to the associated wiki page and a link to an associated image.
 
-## Följande grundsyn gäller dugga-svar:
+Below are new bits of code that were added to this project.
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+This is code for the back button, to return from the about page to the main page.
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+  buttontwo =(Button) findViewById(R.id.buttontwo);
+
+        buttontwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivity1();
+            }
+        });
+    }
+    public void openActivity1(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
 ```
+This is the code used to show images in the recyclerview, upon failure to load image from auxdata a an error image is shown.
+```
+Picasso.get()
+                .load(colors.get(position).getAuxdata().getImg())
+                .into(holder.img, new Callback() {
+                    @Override
+                    public void onSuccess() {}
 
-Bilder läggs i samma mapp som markdown-filen.
+                    @Override
+                    public void onError(Exception e) {
+                        Picasso.get().load("https://i.ibb.co/wC7Q8zm/Untitled.png").into(holder.img);
+                    }
+                });
+```
+
+Screenshots that show everything in the recyclerview and about page.
 
 ![](blue.png)
 ![](cyan.png)
