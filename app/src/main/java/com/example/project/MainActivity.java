@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=c21adano";
     private final String JSON_FILE = "mountains.json";
-    private ArrayList<Mountain> mountains;
+    private ArrayList<Color> colors;
     private RecyclerView recyclerView;
     private Button button;
 
@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     public void onPostExecute(String json) {
         Log.d("MainActivity", json);
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Mountain>>(){}.getType();
-        mountains = gson.fromJson(json, type);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(mountains);
+        Type type = new TypeToken<ArrayList<Color>>(){}.getType();
+        colors = gson.fromJson(json, type);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(colors);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView = findViewById(R.id.recycle_view);

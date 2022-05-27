@@ -1,6 +1,6 @@
 package com.example.project;
 
-public class Mountain {
+public class Color {
     private String id;
     private String name;
     private String location;
@@ -9,7 +9,7 @@ public class Mountain {
     private int company;
     private Auxdata auxdata;
 
-    public Mountain(String id, String name, String location, int cost, int size, int company, Auxdata auxdata) {
+    public Color(String id, String name, String location, int cost, int size, int company, Auxdata auxdata) {
         this.id = id;
         this.name = name;
         this.location = location;
